@@ -28,17 +28,24 @@ function farewell () {
 
 process.stdin.on("data", data => {
     const formatData = String(data).trim();
-    if (formatData.includes('cd ')) {
-        const checkDir = path.join(currDir, formatData.split(' ')[1]);
-        fs.stat(checkDir, (err) => {
-            if (!err) {
-                currDir = checkDir;
-                process.stdout.write(`You are currently in ${currDir}\n`);
-            }
-            else if (err.code === 'ENOENT') {
-                process.stdout.write(`${INVALID}: there is no such directory\n`);
-            }
-        });
+    if (formatData.includes('cd')) {
+        if (!formatData.split(' ')[1]) {
+            process.stdout.write(`${INVALID}: enter directory name\n`);
+        
+        
+        } else {
+            const checkDir = path.join(currDir, formatData.split(' ')[1]);
+            fs.stat(checkDir, (err) => {
+                if (!err) {
+                    currDir = checkDir;
+                    process.stdout.write(`You are currently in ${currDir}\n`);
+                }
+                else if (err.code === 'ENOENT') {
+                    process.stdout.write(`${INVALID}: there is no such directory\n`);
+                }
+            });
+        }
+        
     } else {
         switch (formatData) {
             case '.exit':
