@@ -1,0 +1,12 @@
+{
+  "name": "file-manager",
+  "version": "0.0.1",
+  "description": "task solution for nodejs course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Irina Migunova",
+  "license": "ISC"
+}
