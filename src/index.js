@@ -27,7 +27,13 @@ function farewell () {
     process.exit();
 }
 
-process.stdin.on("data", data => {
+async function isFile(path) {  
+    const stats = await fs.stat(path);
+  
+    return stats.isFile()
+  }
+
+process.stdin.on("data", async data => {
     const formatData = String(data).trim();
     if (formatData.includes('cd')) {
         const nextFolder = formatData.split(' ')[1]
@@ -58,8 +64,27 @@ process.stdin.on("data", data => {
                     currDir = path.join(currDir, '..');
                 };
                 break;
-            
-    
+            case 'ls':
+                const arrFiles = [];
+                const arrDirs = [];
+                fs.readdir(currDir, { withFileTypes: true }, (err, files) => {
+                    files.forEach((file) => {
+                        if (file.isFile()) {
+                            arrFiles.push(file.name);
+                        } else {
+                            arrDirs.push(file.name);
+                        };
+                    });
+                    arrDirs.sort();
+                    arrFiles.sort();
+
+                    console.log(arrDirs.concat(arrFiles));
+                });
+                
+                break;
+
+            default: 
+                process.stdout.write(`${FAILED}: there's no such command\n`);
         }
         process.stdout.write(`You are currently in ${currDir}\n`);
     }
