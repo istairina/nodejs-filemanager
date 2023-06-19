@@ -1,9 +1,9 @@
 
-import path from 'path';
-import { fileURLToPath } from 'url';
+import os from 'os';
+import path from 'path'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const userHomeDir = os.homedir();
+let currDir = userHomeDir;
 
 let username;
 process.argv.some(elem => {
@@ -23,11 +23,19 @@ function farewell () {
 }
 
 process.stdin.on("data", data => {
-    if (String(data).trim() === '.exit') {
-        farewell();
+    switch (String(data).trim()) {
+        case '.exit':
+            farewell();
+            break;
+        case 'up':
+            if (path.parse(currDir).root !== currDir) {
+                currDir = path.join(currDir, '..');
+            };
+            break;
+
     }
-    console.log(`You are currently in ${__dirname}`);
-    data = data.toString().toUpperCase()
+
+    console.log(`You are currently in ${currDir}`);
     process.stdout.write(data)
 });
 
@@ -38,4 +46,4 @@ process.on("SIGINT", () => {
 
 
 console.log(`Welcome to the File Manager, ${username}!`);
-console.log(`You are currently in ${__dirname}`);
+console.log(`You are currently in ${currDir}`);
