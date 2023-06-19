@@ -1,4 +1,10 @@
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 let username;
 process.argv.some(elem => {
     if (elem.includes("--username")) {
@@ -17,10 +23,10 @@ function farewell () {
 }
 
 process.stdin.on("data", data => {
-    // console.log(String(data).trim())
     if (String(data).trim() === '.exit') {
         farewell();
     }
+    console.log(`You are currently in ${__dirname}`);
     data = data.toString().toUpperCase()
     process.stdout.write(data)
 });
@@ -32,3 +38,4 @@ process.on("SIGINT", () => {
 
 
 console.log(`Welcome to the File Manager, ${username}!`);
+console.log(`You are currently in ${__dirname}`);
