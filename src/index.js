@@ -2,6 +2,7 @@
 import os from 'os';
 import path from 'path';
 import fs from 'fs';
+import cd from './cd.js';
 
 const userHomeDir = os.homedir();
 let currDir = userHomeDir;
@@ -29,12 +30,12 @@ function farewell () {
 process.stdin.on("data", data => {
     const formatData = String(data).trim();
     if (formatData.includes('cd')) {
-        if (!formatData.split(' ')[1]) {
+        const nextFolder = formatData.split(' ')[1]
+        if (nextFolder) {
             process.stdout.write(`${INVALID}: enter directory name\n`);
-        
-        
         } else {
-            const checkDir = path.join(currDir, formatData.split(' ')[1]);
+            cd();
+            const checkDir = path.join(currDir, nextFolder);
             fs.stat(checkDir, (err) => {
                 if (!err) {
                     currDir = checkDir;
@@ -44,6 +45,7 @@ process.stdin.on("data", data => {
                     process.stdout.write(`${INVALID}: there is no such directory\n`);
                 }
             });
+            
         }
         
     } else {
