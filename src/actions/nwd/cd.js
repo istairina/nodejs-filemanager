@@ -11,7 +11,7 @@ export default async function cd(formatData) {
 
     const nextFolder = formatData[1];
 
-    const checkDir = path.join(currDir, nextFolder);
+    const checkDir = path.resolve(currDir, nextFolder);
            fs.stat(checkDir, (err) => {
                 if (!err) {
                     setCurrDir(checkDir);
