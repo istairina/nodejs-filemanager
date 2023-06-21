@@ -5,6 +5,7 @@ import up from './actions/nwd/up.js';
 import ls from './actions/nwd/ls.js';
 import cat from './actions/basic/cat.js';
 import add from './actions/basic/add.js';
+import rn from './actions/basic/rn.js';
 import { username } from './constants/username.js';
 import { INVALID, FAILED } from './constants/errors.js';
 
@@ -39,6 +40,9 @@ process.stdin.on("data", data => {
                 break;
             case 'add':
                 add(formatData);
+                break;
+            case 'rn':
+                rn(formatData);
                 break;
             default: 
                 process.stdout.write(`${INVALID}\n`);
