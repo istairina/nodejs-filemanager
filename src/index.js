@@ -1,11 +1,7 @@
 
 import os from 'os';
-import cd from './actions/nwd/cd.js';
-import up from './actions/nwd/up.js';
-import ls from './actions/nwd/ls.js';
-import cat from './actions/basic/cat.js';
-import add from './actions/basic/add.js';
-import rn from './actions/basic/rn.js';
+import { cd, ls, up } from './actions/nwd/_nwd.js';
+import { cat, add, rn } from './actions/basic/_basic.js';
 import { username } from './constants/username.js';
 import { INVALID, FAILED } from './constants/errors.js';
 
