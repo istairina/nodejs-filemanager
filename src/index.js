@@ -3,6 +3,8 @@ import os from 'os';
 import cd from './actions/nwd/cd.js';
 import up from './actions/nwd/up.js';
 import ls from './actions/nwd/ls.js';
+import cat from './actions/basic/cat.js';
+import add from './actions/basic/add.js';
 import { username } from './constants/username.js';
 import { INVALID, FAILED } from './constants/errors.js';
 
@@ -31,6 +33,12 @@ process.stdin.on("data", data => {
                 break;
             case 'ls':
                 ls(formatData);
+                break;
+            case 'cat':
+                cat(formatData);
+                break;
+            case 'add':
+                add(formatData);
                 break;
             default: 
                 process.stdout.write(`${INVALID}\n`);

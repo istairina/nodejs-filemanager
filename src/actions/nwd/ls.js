@@ -10,19 +10,29 @@ export default function ls(data) {
     }
     const arrFiles = [];
     const arrDirs = [];
+    const arrLinks = [];
+    class folderContent {
+        constructor(name, type) {
+            this.Name = name;
+            this.Type = type;
+        }
+    }
     
     fs.readdir(currDir, { withFileTypes: true }, (err, files) => {
         files.forEach((file) => {
                 if (file.isFile()) {
-                            arrFiles.push(file.name);
+                            arrFiles.push(new folderContent(file.name, 'file'));
+                        } else if (file.isSymbolicLink()) {
+                            arrLinks.push(new folderContent(file.name, 'link'));
                         } else {
-                            arrDirs.push(file.name);
+                            arrDirs.push(new folderContent(file.name, 'directory'));
                         };
                     });
                     arrDirs.sort();
                     arrFiles.sort();
+                    arrLinks.sort()
 
-                    console.log(arrDirs.concat(arrFiles));
+                    console.table(arrDirs.concat(arrFiles).concat(arrLinks));
                 });
                 
 }
