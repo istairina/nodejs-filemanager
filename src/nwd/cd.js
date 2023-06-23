@@ -3,7 +3,7 @@ import path from 'path';
 
 export const cd = (formatData) => {
     if (formatData.length != 2) {
-        process.stdout.write(`${FAILED}\n`);
+        process.stdout.write(`${INVALID}: wrong number of args\n`);
         return;
     };
 

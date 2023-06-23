@@ -3,7 +3,7 @@ import { INVALID, FAILED } from "../constants/errors.js";
 
 export const osx = (data) => {
     if (data.length != 2) {
-        process.stdout.write(`${FAILED}\n`);
+        process.stdout.write(`${INVALID}: wrong number of args\n`);
         return;
     };
     switch (data[1]) {

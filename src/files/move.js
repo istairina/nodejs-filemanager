@@ -4,7 +4,7 @@ import fs from 'fs';
 
 export const mv = (formatData) => {
     if (formatData.length != 3) {
-        process.stdout.write(`${FAILED}\nnumber of args`);
+        process.stdout.write(`${INVALID}: wrong number of args\n`);
         return;
     };
 

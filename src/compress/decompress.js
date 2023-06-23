@@ -7,7 +7,7 @@ import { INVALID, FAILED } from "../constants/errors.js";
 
 export const decompress = async (data) => {
     if (data.length != 3) {
-        process.stdout.write(`${FAILED}\n`);
+        process.stdout.write(`${INVALID}: wrong number of args\n`);
         return;
     };
 

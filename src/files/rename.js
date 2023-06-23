@@ -4,7 +4,7 @@ import fs from 'fs';
 
 export const rn = (formatData) => {
     if (formatData.length != 3) {
-        process.stdout.write(`${INVALID}\n`);
+        process.stdout.write(`${INVALID}: wrong number of args\n`);
         return;
     };
     const pathFile = path.resolve(process.cwd(), formatData[1]);

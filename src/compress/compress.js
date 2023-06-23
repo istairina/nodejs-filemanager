@@ -7,7 +7,7 @@ import { INVALID, FAILED } from "../constants/errors.js";
 
 export const compress = async (data) => {
     if (data.length != 3) {
-        process.stdout.write(`${FAILED}\n`);
+        process.stdout.write(`${INVALID}: wrong number of args\n`);
         return;
     };
     const source = createReadStream(path.resolve(process.cwd(), data[1]));
