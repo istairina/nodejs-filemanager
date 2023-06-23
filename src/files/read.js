@@ -3,7 +3,7 @@ import { currDir } from "../index.js";
 import path from 'path';
 import fs from 'fs';
 
-export default async function cat(formatData) {
+export const cat = (formatData) => {
     if (formatData.length != 2) {
         process.stdout.write(FAILED);
         return;

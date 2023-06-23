@@ -2,7 +2,7 @@ import { currDir, setCurrDir } from "../index.js";
 import { INVALID, FAILED } from "../constants/errors.js";
 import path from 'path';
 
-export default function up(data) {
+export const up = (data) => {
     if (data.length > 1) {
         process.stdout.write(`${INVALID}: the command should be without parameters`);
         return;

@@ -3,7 +3,7 @@ import { currDir } from "../index.js";
 import path from 'path';
 import fs from 'fs';
 
-export default function ls(data) {
+export const ls = (data) => {
     if (data.length > 1) {
         process.stdout.write(`${INVALID}: the command should be without parameters`);
         return;
