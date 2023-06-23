@@ -3,6 +3,7 @@ import { cat, add, rn, cp, mv, rm } from './files/_files.js';
 import { osx } from './os/os.js';
 import { hash } from './hash/hash.js';
 import { compress, decompress } from './compress/_compress.js'
+import { farewell } from './index.js';
 
 export const commands = {
     'up': up,
