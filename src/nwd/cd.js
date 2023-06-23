@@ -2,6 +2,7 @@ import { INVALID, FAILED } from "../constants/errors.js";
 import { currDir, setCurrDir } from "../index.js";
 import path from 'path';
 import fs from 'fs';
+import { isFile } from "../utils/isFile.js";
 
 export const cd = (formatData) => {
     if (formatData.length != 2) {
@@ -12,15 +13,19 @@ export const cd = (formatData) => {
     const nextFolder = formatData[1];
 
     const checkDir = path.resolve(currDir, nextFolder);
-           fs.stat(checkDir, (err) => {
-                if (!err) {
-                    setCurrDir(checkDir);
+    if (!isFile(checkDir)) {
+        setCurrDir(checkDir);
                     process.stdout.write(`You are currently in ${currDir}\n`);
-                }
-                else if (err.code === 'ENOENT') {
-                    process.stdout.write(`${INVALID}: there is no such directory\n`);
-                }
-            });
+    }
+        //    fs.stat(checkDir, (err) => {
+        //         if (!err) {
+        //             setCurrDir(checkDir);
+        //             process.stdout.write(`You are currently in ${currDir}\n`);
+        //         }
+        //         else if (err.code === 'ENOENT') {
+        //             process.stdout.write(`${INVALID}: there is no such directory\n`);
+        //         }
+        //     });
 
 
 }
