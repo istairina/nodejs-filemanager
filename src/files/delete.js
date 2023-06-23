@@ -14,7 +14,7 @@ export const rm = (formatData) => {
             return;
         } 
         if (!stats.isFile()) {
-            process.stdout.write(`${INVALID}\n`);
+            process.stdout.write(`${INVALID}: choose file to delete\n`);
             return;
         }
         

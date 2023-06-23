@@ -9,13 +9,16 @@ export const rn = (formatData) => {
     };
     const pathFile = path.resolve(process.cwd(), formatData[1]);
     const pathNewFile = path.resolve(process.cwd(), formatData[2]);
+    if (path.basename(pathNewFile) != formatData[2]) {
+        process.stdout.write(`${INVALID}: type just a new name without path\n`);
+        return;
+    }
     fs.rename(pathFile, pathNewFile, (err) => {
         if (err) {
             process.stdout.write(`${FAILED}\n`);
         } else {
             process.stdout.write(`${formatData[1]} has been renamed to ${formatData[2]}\n`);
-            process.stdout.write(`You are currently in ${process.cwd()}\n`);
-        };
-        
+        }
+        process.stdout.write(`You are currently in ${process.cwd()}\n`);
     })
 }

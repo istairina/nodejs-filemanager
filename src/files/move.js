@@ -16,7 +16,7 @@ export const mv = (formatData) => {
             return;
         } 
         if (!stats.isFile()) {
-            process.stdout.write(`${INVALID}\n`);
+            process.stdout.write(`${INVALID}: choose file to move\n`);
             return;
         }
         fs.stat(destination, (err, stats) => {
@@ -25,7 +25,7 @@ export const mv = (formatData) => {
                 return;
             };
             if (!stats.isDirectory()) {
-                process.stdout.write(`${INVALID}\n`);
+                process.stdout.write(`${INVALID}: choose folde for destination \n`);
                 return;
             };
             const newFile = path.resolve(destination, path.basename(originalFile));
@@ -41,6 +41,7 @@ export const mv = (formatData) => {
                     fs.unlink(originalFile, (err) => {
                         if (err) process.stdout.write(`${FAILED}\n`);
                     });
+                    console.log('file moved');
                 });            
                 console.log(`You are currently in ${process.cwd()}`);
             })
