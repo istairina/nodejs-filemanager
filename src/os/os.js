@@ -1,10 +1,10 @@
 import os from 'os';
-import { INVALID, FAILED } from "../../constants/errors.js";
-import { currDir } from "../../index.js";
+import { INVALID, FAILED } from "../constants/errors.js";
+import { currDir } from "../index.js";
 
 export const osx = (data) => {
     if (data.length != 2) {
-        process.stdout.write(FAILED);
+        process.stdout.write(`${FAILED}\n`);
         return;
     };
     switch (data[1]) {
@@ -18,6 +18,7 @@ export const osx = (data) => {
                 const ghz = cpu.speed / 1000;
                 process.stdout.write(`Processor #${ind + 1}: model ${cpu.model}, speed ${ghz} GHz\n`);
             });
+            break;
         case '--homedir':
             process.stdout.write(`${os.homedir()}\n`);
             break;

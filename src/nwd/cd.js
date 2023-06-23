@@ -1,5 +1,5 @@
-import { INVALID, FAILED } from "../../constants/errors.js";
-import { currDir, setCurrDir } from "../../index.js";
+import { INVALID, FAILED } from "../constants/errors.js";
+import { currDir, setCurrDir } from "../index.js";
 import path from 'path';
 import fs from 'fs';
 

@@ -4,6 +4,7 @@ import { cd, ls, up } from './nwd/_nwd.js';
 import { cat, add, rn, cp, mv, rm } from './files/_files.js';
 import { osx } from './os/os.js';
 import { hash } from './hash/hash.js';
+import { compress, decompress } from './compress/_compress.js'
 import { username } from './constants/username.js';
 import { INVALID, FAILED } from './constants/errors.js';
 
@@ -56,6 +57,12 @@ process.stdin.on("data", data => {
                 break;
             case 'hash':
                 hash(formatData);
+                break;
+            case 'compress':
+                compress(formatData);
+                break;
+            case 'decompress':
+                decompress(formatData);
                 break;
             default: 
                 process.stdout.write(`${INVALID}\n`);

@@ -1,8 +1,8 @@
 import { createHash } from "crypto";
 import fs from "fs/promises";
 import path from "path";
-import { currDir } from "../../index.js";
-import { INVALID, FAILED } from "../../constants/errors.js";
+import { currDir } from "../index.js";
+import { INVALID, FAILED } from "../constants/errors.js";
 
 export const hash = async (data) => {
     if (data.length != 2) {
