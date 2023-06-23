@@ -1,7 +1,6 @@
 import { createHash } from "crypto";
 import fs from "fs/promises";
 import path from "path";
-import { currDir } from "../index.js";
 import { INVALID, FAILED } from "../constants/errors.js";
 
 export const hash = async (data) => {
@@ -9,7 +8,7 @@ export const hash = async (data) => {
         process.stdout.write(`${FAILED}\n`);
         return;
     };
-    const pathToFile = path.resolve(currDir, data[1]);
+    const pathToFile = path.resolve(process.cwd(), data[1]);
     try {
         const fileContent = await fs.readFile(pathToFile);
         const hash = createHash("sha256").update(fileContent);

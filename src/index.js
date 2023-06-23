@@ -6,11 +6,7 @@ import { stdin as input, stdout as output } from 'node:process';
 import * as readline from 'node:readline/promises';
 import { commands } from './commands.js';
 
-const userHomeDir = os.homedir();
-export let currDir = userHomeDir;
-export function setCurrDir(newDir) {
-    currDir = newDir;
-}
+process.chdir(os.homedir());
 
 export const farewell = () => {
     output.write(`Thank you for using File Manager, ${username}, goodbye!\n`);
@@ -38,4 +34,4 @@ rl.on("SIGINT", () => {
 });
 
 console.log(`Welcome to the File Manager, ${username}!`);
-console.log(`You are currently in ${currDir}`);
+console.log(`You are currently in ${process.cwd()}`);

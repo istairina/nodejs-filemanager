@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { FAILED } from '../constants/errors.js';
 
 export const isFile = (pathToFile) => {
     let isFileResult = false;
@@ -11,5 +12,6 @@ export const isFile = (pathToFile) => {
             isFileResult = true;
         }
     });
+    console.log(isFileResult);
     return isFileResult;
 };

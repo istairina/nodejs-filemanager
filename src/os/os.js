@@ -1,6 +1,5 @@
 import os from 'os';
 import { INVALID, FAILED } from "../constants/errors.js";
-import { currDir } from "../index.js";
 
 export const osx = (data) => {
     if (data.length != 2) {
@@ -31,5 +30,5 @@ export const osx = (data) => {
         default:
             process.stdout.write(`${INVALID}\n`);
     }
-    console.log(`You are currently in ${currDir}`);
+    console.log(`You are currently in ${process.cwd()}`);
 };

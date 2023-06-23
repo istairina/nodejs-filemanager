@@ -1,6 +1,4 @@
 import { INVALID, FAILED } from "../constants/errors.js";
-import { currDir } from "../index.js";
-import path from 'path';
 import fs from 'fs';
 
 export const ls = (data) => {
@@ -18,7 +16,11 @@ export const ls = (data) => {
         }
     }
     
-    fs.readdir(currDir, { withFileTypes: true }, (err, files) => {
+    fs.readdir(process.cwd(), { withFileTypes: true }, (err, files) => {
+if (err) {
+    process.stdout.write(`${FAILED}: the command should be without parameters`);
+}
+
         files.forEach((file) => {
                 if (file.isFile()) {
                             arrFiles.push(new folderContent(file.name, 'file'));

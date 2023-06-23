@@ -1,5 +1,4 @@
 import { INVALID, FAILED } from "../constants/errors.js";
-import { currDir } from "../index.js";
 import path from 'path';
 import fs from 'fs';
 
@@ -8,7 +7,7 @@ export const rm = (formatData) => {
         process.stdout.write(FAILED);
         return;
     };
-    const pathFile = path.resolve(currDir, formatData[1]);
+    const pathFile = path.resolve(process.cwd(), formatData[1]);
     fs.stat(pathFile, (err, stats) => {
         if (err) {
             process.stdout.write(`${FAILED}\n`);
@@ -23,7 +22,7 @@ export const rm = (formatData) => {
             if (err) {
                 process.stdout.write(`${FAILED}\n`);
             }
-            console.log(`You are currently in ${currDir}`);
+            console.log(`You are currently in ${process.cwd()}`);
         });
     });
 };
