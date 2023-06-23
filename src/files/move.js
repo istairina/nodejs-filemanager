@@ -29,20 +29,26 @@ export const mv = (formatData) => {
                 return;
             };
             const newFile = path.resolve(destination, path.basename(originalFile));
-            fs.access(newFile, (err) => {
+            fs.open(newFile, (err) => {
                 if (!err) {
-                    process.stdout.write(`${FAILED}\n`);
+                    process.stdout.write(`${FAILED}: file already exist\n`);
                     return; 
                 };
                 const readable = fs.createReadStream(originalFile);
                 const writable = fs.createWriteStream(newFile);
-                readable.pipe(writable);
-                writable.on('finish', () => {
-                    fs.unlink(originalFile, (err) => {
-                        if (err) process.stdout.write(`${FAILED}\n`);
-                    });
-                    console.log('file moved');
-                });            
+                try {
+                    readable.pipe(writable);
+                    writable.on('finish', () => {
+                        fs.unlink(originalFile, (err) => {
+                            if (err) process.stdout.write(`${FAILED}\n`);
+                        });
+                        console.log('file moved');
+                    });  
+                }
+                catch (err) {
+                    process.stdout.write(`${FAILED}\n`);
+                }
+          
                 console.log(`You are currently in ${process.cwd()}`);
             })
         });

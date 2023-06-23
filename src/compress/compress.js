@@ -5,7 +5,7 @@ import { pipeline } from "stream";
 import { INVALID, FAILED } from "../constants/errors.js";
 
 
-export const compress = async (data) => {
+export const compress = (data) => {
     if (data.length != 3) {
         process.stdout.write(`${INVALID}: wrong number of args\n`);
         return;

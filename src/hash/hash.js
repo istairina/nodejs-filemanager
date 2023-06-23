@@ -12,10 +12,10 @@ export const hash = async (data) => {
     try {
         const fileContent = await fs.readFile(pathToFile);
         const hash = createHash("sha256").update(fileContent);
-        process.stdout.write(`${hash.digest("hex")}\n`);
+        process.stdout.write(`Hash for ${data[1]} is ${hash.digest("hex")}\n`);
     }
     catch (err) {
-        process.stdout.write(`${INVALID}\n`);
+        process.stdout.write(`${FAILED}\n`);
     }
 };
 

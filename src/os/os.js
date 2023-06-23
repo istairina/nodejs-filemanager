@@ -1,5 +1,5 @@
 import os from 'os';
-import { INVALID, FAILED } from "../constants/errors.js";
+import { INVALID } from "../constants/errors.js";
 
 export const osx = (data) => {
     if (data.length != 2) {
@@ -19,16 +19,16 @@ export const osx = (data) => {
             });
             break;
         case '--homedir':
-            process.stdout.write(`${os.homedir()}\n`);
+            process.stdout.write(`Home directory is ${os.homedir()}\n`);
             break;
         case '--username':
-            process.stdout.write(`${os.userInfo().username}\n`);
+            process.stdout.write(`System username is ${os.userInfo().username}\n`);
             break;
         case '--architecture':
-            process.stdout.write(`${os.arch()}\n`);
+            process.stdout.write(`CPU architecture is ${os.arch()}\n`);
             break;
         default:
-            process.stdout.write(`${INVALID}\n`);
+            process.stdout.write(`${INVALID}: wrong command\n`);
     }
     console.log(`You are currently in ${process.cwd()}`);
 };
