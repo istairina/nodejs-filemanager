@@ -10,8 +10,11 @@ export const decompress = async (data) => {
         process.stdout.write(`${FAILED}\n`);
         return;
     };
-    const source = createReadStream(path.resolve(process.cwd(), data[1]));
-    const destination = createWriteStream(path.resolve(process.cwd(), data[2]));
+
+    const sourcePath = path.resolve(process.cwd(), data[1]);
+    const destPath = path.resolve(process.cwd(), data[2]);
+    const source = createReadStream(sourcePath);
+    const destination = createWriteStream(destPath);
 
   pipeline(source, createBrotliDecompress(), destination, (err) => {
     if (err) {

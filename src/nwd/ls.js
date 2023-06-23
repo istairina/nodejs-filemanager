@@ -30,9 +30,9 @@ if (err) {
                             arrDirs.push(new folderContent(file.name, 'directory'));
                         };
                     });
-                    arrDirs.sort();
-                    arrFiles.sort();
-                    arrLinks.sort()
+                    arrDirs.sort((a, b) => {return a - b});
+                    arrFiles.sort((a, b) => {return a - b});
+                    arrLinks.sort((a, b) => {return a - b});
 
                     console.table(arrDirs.concat(arrFiles).concat(arrLinks));
                 });

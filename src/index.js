@@ -2,7 +2,7 @@
 import os from 'os';
 import { username } from './constants/username.js';
 import { INVALID } from './constants/errors.js';
-import { stdin as input, stdout as output } from 'node:process';
+import { stdin as input, stdout as output, cwd } from 'node:process';
 import * as readline from 'node:readline/promises';
 import { commands } from './commands.js';
 
@@ -34,4 +34,4 @@ rl.on("SIGINT", () => {
 });
 
 console.log(`Welcome to the File Manager, ${username}!`);
-console.log(`You are currently in ${process.cwd()}`);
+console.log(`You are currently in ${cwd()}`);

@@ -9,7 +9,7 @@ export const cd = (formatData) => {
 
     const nextFolder = formatData[1];
 
-    const checkDir = path.resolve(currDir, nextFolder);
+    const checkDir = path.resolve(process.cwd(), nextFolder);
     try {
         process.chdir(checkDir);
     }
