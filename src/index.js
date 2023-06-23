@@ -1,7 +1,7 @@
 
 import os from 'os';
 import { cd, ls, up } from './actions/nwd/_nwd.js';
-import { cat, add, rn, cp } from './actions/basic/_basic.js';
+import { cat, add, rn, cp } from './actions/files/_files.js';
 import { username } from './constants/username.js';
 import { INVALID, FAILED } from './constants/errors.js';
 
