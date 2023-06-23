@@ -1,7 +1,7 @@
 
 import os from 'os';
 import { cd, ls, up } from './actions/nwd/_nwd.js';
-import { cat, add, rn, cp, mv } from './actions/files/_files.js';
+import { cat, add, rn, cp, mv, rm } from './actions/files/_files.js';
 import { username } from './constants/username.js';
 import { INVALID, FAILED } from './constants/errors.js';
 
@@ -45,6 +45,9 @@ process.stdin.on("data", data => {
                 break;
             case 'mv':
                 mv(formatData);
+                break;
+            case 'rm':
+                rm(formatData);
                 break;
             default: 
                 process.stdout.write(`${INVALID}\n`);
