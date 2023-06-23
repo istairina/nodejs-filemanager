@@ -7,6 +7,8 @@ import { hash } from './hash/hash.js';
 import { compress, decompress } from './compress/_compress.js'
 import { username } from './constants/username.js';
 import { INVALID, FAILED } from './constants/errors.js';
+import { stdin as input, stdout as output } from 'node:process';
+import * as readline from 'node:readline/promises';
 
 const userHomeDir = os.homedir();
 export let currDir = userHomeDir;
@@ -16,10 +18,12 @@ export function setCurrDir(newDir) {
 
 function farewell () {
     process.stdout.write(`Thank you for using File Manager, ${username}, goodbye!\n`);
-    process.exit();
+    rl.close();
 }
 
-process.stdin.on("data", data => {
+const rl = readline.createInterface({ input, output });
+
+rl.on("line", (data) => {
     const formatData = String(data).trim().split(' ');
         switch (formatData[0]) {
             case '.exit':
@@ -70,7 +74,7 @@ process.stdin.on("data", data => {
     }
 );
 
-process.on("SIGINT", () => {
+rl.on("SIGINT", () => {
     farewell();
 });
 
