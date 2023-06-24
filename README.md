@@ -1,9 +1,11 @@
 # nodejs-filemanager
 
-##Launch from Nodejs-Filemanager directory
+## Launch from Nodejs-Filemanager directory
+
 npm run start -- --username=Test
 
-##Commands in my file manager:
+## Commands in my file manager:
+
 up
 cd path_to_directory
 ls
