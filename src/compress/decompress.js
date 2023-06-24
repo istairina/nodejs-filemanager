@@ -4,7 +4,7 @@ import path from "path";
 import { pipeline } from "stream";
 import { invalid, failed } from "../constants/messages.js";
 
-export const decompress = async (data) => {
+export const decompress = (data) => {
   if (data.length != 3) {
     invalid("wrong number of arguments");
     return;
