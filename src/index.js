@@ -1,7 +1,7 @@
 import os from "os";
 import { username } from "./constants/username.js";
-import { invalid, currentDir, failed } from "./constants/messages.js";
-import { stdin as input, stdout as output, cwd } from "node:process";
+import { invalid, currentDir } from "./constants/messages.js";
+import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { commands } from "./commands.js";
 
