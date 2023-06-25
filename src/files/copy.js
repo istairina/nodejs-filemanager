@@ -1,15 +1,18 @@
 import { invalid, failed } from "../constants/messages.js";
+import { getArgs } from "../utils/getArgs.js";
+import { validateArgs } from "../utils/validateArgs.js";
 import path from "path";
 import fs from "fs";
 
-export const cp = (formatData) => {
-  if (formatData.length != 3) {
+export const cp = (data) => {
+  const args = getArgs(data);
+  if (!validateArgs(args, 2)) {
     invalid("wrong number of args");
     return;
   }
 
-  const originalFile = path.resolve(process.cwd(), formatData[1]);
-  const destination = path.resolve(process.cwd(), formatData[2]);
+  const originalFile = path.resolve(process.cwd(), args[0]);
+  const destination = path.resolve(process.cwd(), args[1]);
   fs.stat(originalFile, (err, stats) => {
     if (err) {
       failed();

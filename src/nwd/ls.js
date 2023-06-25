@@ -1,8 +1,11 @@
 import { invalid, failed } from "../constants/messages.js";
+import { getArgs } from "../utils/getArgs.js";
+import { validateArgs } from "../utils/validateArgs.js";
 import fs from "fs";
 
 export const ls = (data) => {
-  if (data.length > 1) {
+  const args = getArgs(data);
+  if (!validateArgs(args, 0)) {
     invalid("the command should be without parameters");
     return;
   }

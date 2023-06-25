@@ -1,8 +1,9 @@
 import os from "os";
 import { invalid } from "../constants/messages.js";
+import { getArgs } from "../utils/getArgs.js";
 
 export const osx = (data) => {
-  if (data.length != 2) {
+  if (!validateArgs(data, 2)) {
     invalid("wrong number of args");
     return;
   }

@@ -4,7 +4,7 @@
 
 npm run start -- --username=Test
 
-## Commands in my file manager:
+## Commands in my file manager below. If you need to use a space in a path / name use single quotes (ex. cd 'my folder')
 
 up
 cd path_to_directory

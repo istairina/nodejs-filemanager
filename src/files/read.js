@@ -1,14 +1,17 @@
 import { invalid, failed } from "../constants/messages.js";
+import { getArgs } from "../utils/getArgs.js";
+import { validateArgs } from "../utils/validateArgs.js";
 import path from "path";
 import fs from "fs";
 
-export const cat = (formatData) => {
-  if (formatData.length != 2) {
-    invalid("wrong number of arguments");
+export const cat = (data) => {
+  const args = getArgs(data);
+  if (!validateArgs(args, 1)) {
+    invalid("wrong number of args");
     return;
   }
 
-  const checkFile = path.resolve(process.cwd(), formatData[1]);
+  const checkFile = path.resolve(process.cwd(), args[0]);
   fs.stat(checkFile, (err) => {
     if (!err) {
       const fileStream = fs.createReadStream(checkFile);

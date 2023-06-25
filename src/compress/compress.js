@@ -3,14 +3,17 @@ import { createBrotliCompress } from "zlib";
 import path from "path";
 import { pipeline } from "stream";
 import { invalid, failed } from "../constants/messages.js";
+import { getArgs } from "../utils/getArgs.js";
+import { validateArgs } from "../utils/validateArgs.js";
 
 export const compress = (data) => {
-  if (data.length != 3) {
-    invalid("wrong number of arguments");
+  const args = getArgs(data);
+  if (!validateArgs(args, 2)) {
+    invalid("wrong number of args");
     return;
   }
-  const source = createReadStream(path.resolve(process.cwd(), data[1]));
-  const destination = createWriteStream(path.resolve(process.cwd(), data[2]));
+  const source = createReadStream(path.resolve(process.cwd(), args[0]));
+  const destination = createWriteStream(path.resolve(process.cwd(), args[1]));
 
   pipeline(source, createBrotliCompress(), destination, (err) => {
     if (err) {
