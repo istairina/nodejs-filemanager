@@ -5,7 +5,6 @@ import path from "path";
 
 export const cd = (data) => {
   const args = getArgs(data);
-  console.log(args);
   if (!validateArgs(args, 1)) {
     invalid("wrong number of args");
     return;

@@ -1,6 +1,6 @@
 import os from "os";
 import { invalid } from "../constants/messages.js";
-import { getArgs } from "../utils/getArgs.js";
+import { validateArgs } from "../utils/validateArgs.js";
 
 export const osx = (data) => {
   if (!validateArgs(data, 2)) {

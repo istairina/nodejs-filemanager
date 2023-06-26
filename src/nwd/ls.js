@@ -42,6 +42,7 @@ export const ls = (data) => {
     arrLinks.sort((a, b) => {
       return a - b;
     });
-    console.table(arrDirs.concat(arrFiles).concat(arrLinks));
+    const dataTable = arrDirs.concat(arrFiles).concat(arrLinks);
+    return dataTable.length === 0 ? console.log('The folder is empty') : console.table(dataTable);
   });
 };

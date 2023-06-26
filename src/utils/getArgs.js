@@ -5,7 +5,11 @@ export const getArgs = (raw) => {
   let tempArr = [];
   rawArgs.forEach((elem) => {
     if (elem[0] == "'") {
-      tempArr.push(elem);
+      if (elem[elem.length - 1] == "'") {
+        res.push(elem);
+      } else {
+        tempArr.push(elem);
+      }
     } else if (tempArr.length > 0) {
       tempArr.push(elem);
       if (elem[elem.length - 1] == "'") {

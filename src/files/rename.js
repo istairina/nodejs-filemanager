@@ -21,7 +21,7 @@ export const rn = (data) => {
     if (err) {
       failed();
     } else {
-      console.log(`${args[0]} has been renamed to ${args[1]}`);
+      console.log(`'${args[0]}' has been renamed to '${args[1]}'`);
     }
   });
 };
