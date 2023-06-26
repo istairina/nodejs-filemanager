@@ -3,8 +3,8 @@ export const getArgs = (raw) => {
   const rawArgs = raw.slice(1);
   const res = [];
   let tempArr = [];
-  rawArgs.forEach((elem) => {
-    if (elem[0] == "'") {
+  rawArgs.forEach((elem, ind) => {
+    if (elem[0] == "'" && ind !== (rawArgs.length - 1)) {
       if (elem[elem.length - 1] == "'") {
         res.push(elem);
       } else {
