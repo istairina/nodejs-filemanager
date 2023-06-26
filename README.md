@@ -4,7 +4,8 @@
 
 npm run start -- --username=Test
 
-## Commands in my file manager below. If you need to use a space in a path / name use single quotes (ex. cd 'my folder')
+## Commands in my file manager below.  
+If you need to use a space in a path / name use single quotes (ex. cd 'my folder')
 
 up  
 cd path_to_directory  
@@ -25,5 +26,5 @@ os --architecture
 
 hash path_to_file  
 
-compress path_to_file path_to_destination  
-decompress path_to_file path_to_destination  
+compress path_to_file path_to_file_after_compression  
+decompress path_to_file path_to_file_after_decompress  
