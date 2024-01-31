@@ -2,6 +2,9 @@
   "name": "file-manager",
   "version": "0.0.1",
   "description": "task solution for nodejs course",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "main": "index.js",
   "type": "module",
   "scripts": {
