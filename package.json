@@ -2,10 +2,13 @@
   "name": "file-manager",
   "version": "0.0.1",
   "description": "task solution for nodejs course",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
   "author": "Irina Migunova",
   "license": "ISC"
